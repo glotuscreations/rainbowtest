@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+  <br>
+    <h1>Sign Up</h1>
+    <br><br>
+    <form class="form-horizontal" method="POST">
+        {% csrf_token %}
+        {% load bootstrap %}
+  {{ form|bootstrap }}
+  <p>By clicking on Sign Up you confirm that you are over the age of 18, and you accept the terms and conditions as outlined on our <a href="{% url 'home:terms' %}">Terms & Conditions</a> page.</p>
+        <input type="submit" value="Sign Up" class="btn btn-default">
+    </form>
+</div>
+{% endblock %}

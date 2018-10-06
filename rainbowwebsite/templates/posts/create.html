@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load bootstrap %}
+<div class="container">
+
+<h1>New Post</h1>
+
+{% if error %}
+{{ error }}
+<br />
+<br />
+{% endif %}
+
+<form class="form-horizontal" method="POST">
+  {% csrf_token %}
+{{form|bootstrap}}
+  <input class="btn btn-primary" type="submit" value="Post">
+</form>
+</div>
+{% endblock %}

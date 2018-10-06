@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+<div class="container">
+  <div class="col-lg-10 col-md-6 col-sm-4 col-xs-4">
+{% if request.user == profile.user %}
+<button type="button" name="button"> <a href="{% url 'userprofile:editprofile' user.pk %}">Edit Profile</a></button>
+<button type="button" name="button"> <a href="{% url 'postman:inbox' %}">My Inbox</a></button>
+<button type="button" name="button"> <a href="{% url 'postman:sent' %}">Sent Messages</a></button>
+<button type="button" name="button"> <a href="{% url 'postman:archives' %}">Archived Messages</a></button>
+<button type="button" name="button"> <a href="{% url 'postman:trash' %}">Deleted Messages</a></button>
+<button type="button" name="button"> <a href="{% url 'postman:write' %}">Write to a User</a></button>
+<button type="button" name="button"> <a href="{% url 'userprofile:deleteprofile' user %}">Delete Profile</a></button>
+
+{% else %}
+<button type="button" class="btn btn-warning float-right rounded"><a href="{% url 'postman:write' profile.user %}">Message</a></button>
+<button type="button" class="btn btn-danger float-right rounded"><a href="{% url 'userprofile:report' profile.user %}">Report</a></button>
+{% endif %}
+  </div>
+<br><br>
+
+  <h2>{{ profile.user }}</h2>
+  <hr>
+<img class="img-thumbnail img-responsive rounded float" Height="200" width="200" src="{{ profile.image.url }}" alt='cant display'>
+<br><br>
+<h5>Gender: {{ profile.gender}}</h5>
+<h5>Age: {{ profile.age}}</h5>
+<h5>Ethnicity: {{ profile.Nationality}}</h5>
+{% if profile.height %}
+<h5>Height: {{ profile.height}}</h5>
+{% endif %}
+{% if profile.weight %}
+<h5>Weight: {{ profile.weight}}</h5>
+{% endif %}
+{% if profile.weight %}
+<h5>City: {{ profile.City}}</h5>
+{% endif %}
+<h5>Country: {{ profile.Country}}</h5>
+<br>
+<p>{{ profile.preference}}</p>
+<br>
+<p> <strong>My Introduction:</strong>{{ profile.description|linebreaks}}</p>
+<br>
+<p><strong>My idea soulmate:</strong> {{ profile.lookingfor|linebreaks}}</p>
+<br>
+{% if profile.hobbies %}
+<p> <strong>My hobbies:</strong>{{ profile.hobbies|linebreaks}}</p>
+{% endif %}
+{% if profile.profession %}
+<p> <strong>My profession:</strong>{{ profile.profession|linebreaks}}</p>
+{% endif %}
+
+
+
+</div>
+
+{% endblock %}

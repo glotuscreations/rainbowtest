@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load bootstrap %}
+<br>
+<div class="container" class="form-horizontal">
+
+<form method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+  {{ form|bootstrap }}
+<br>
+  <input type=submit value="submit" />
+</form>
+
+</div>
+
+{% endblock %}

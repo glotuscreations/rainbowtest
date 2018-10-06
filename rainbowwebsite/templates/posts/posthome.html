@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+
+
+<h1>Micro Posts</h1>
+<br>
+Micro Posts are a quick and short way to advertise yourself to other users. Add in a title and a short description of what you are looking for. The username of the micro post is the same as your profile username. Others can contact you directly, by clicking on your profile name in the micro post section. Please note that inappropriate posts will be deleted. Please refer to our <a href="{% url 'home:terms' %}">T&C</a> page for site policies.
+<br><br>
+<a class="btn btn-primary" href="{% url 'posts:create' %}">New Post</a>
+
+<br/>
+<br/>
+
+{% for post in posts %}
+
+<hr>
+
+{{post.title}}
+
+{% if request.user == post.author %}
+<button type="button" class="btn btn-danger float-right rounded"><a href="{% url 'posts:deletepost' post.pk %}">Delete</a></button>
+<br>
+{% endif %}
+{{post.url|linebreaksbr }}
+
+<br><br>
+<a href="{% url 'userprofile:profileview' post.author %}">{{ post.author }}</a>
+<br> <br>
+
+{{ post.pub_date }}
+
+
+{% endfor %}
+
+</div>
+
+
+{% endblock %}

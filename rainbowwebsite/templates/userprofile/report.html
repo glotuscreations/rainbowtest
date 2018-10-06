@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load bootstrap %}
+
+<div class="container">
+
+<h1>Report User</h1>
+<form role="form" action="" method="post" class="form-horizontal">
+  <br>
+  Please be as thorough as possible.
+  <br>
+<br>
+  {{user}}, please type in, 'username' field below to confirm you are reporting the correct person. You should be able to see that
+  in the URL link of your browser above. Please choose from reasons below, and give an explanation as to what the user did. Below are the list of reasons you can use when reporting a profile. Please note that in order to protect your privacy, this user will be reported to our team anonymously. <br>
+
+<br>
+<ul>
+<li>Spam</li>
+<li>Offensive or Abusive</li>
+<li>Impersonation</li>
+<li>	Buying and selling of goods and services</li>
+<li>Under age</li>
+<li>Pornographic material</li>
+<li>Bullying/Harrassment</li>
+</ul>
+<br>
+ <br>
+
+    {% csrf_token %}
+    {{ form|bootstrap }}
+<br>
+    <button type="submit">Submit</button>
+</form>
+</div>
+{% endblock %}

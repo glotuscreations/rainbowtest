@@ -1,0 +1,38 @@
+body {
+  background-color: #fcfcfc;
+  font-family: 'Open Sans', sans-serif;
+
+}
+#heading{
+
+  font-family: 'Dancing Script', cursive;
+}
+
+#h2heading{
+  font-family: 'Dancing Script', cursive;
+}
+
+.carousel-caption {
+    position: relative;
+    z-index: 1;
+    display:table;
+    width:100%;
+    height:100%;
+    padding-right: 900px;
+    font-family: 'Dancing Script', cursive;
+    font-size: 40px;
+
+}
+
+
+#firstcaption{
+  color:orange;
+}
+
+#secondcaption{
+  color:#162d17;
+}
+
+#fourthcaption{
+  padding-right: 100px;
+}

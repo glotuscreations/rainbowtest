@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+{% load bootstrap %}
+
+
+<div class="container">
+
+  <form class="form-horizontal col-md-4 col-lg-4 col-sm-4" action="" method="get">
+        {{ filter.form|bootstrap}} {% csrf_token %}
+        <input type="submit" value='search'/>
+    </form>
+
+  {% for profile in filter.qs %}
+ <div class="col-md-10 col-lg-10 col-sm-8">
+
+
+  <hr>
+
+  <a href="{% url 'userprofile:profileview' profile.user %}"><h3>{{ profile.user }}</h3></a>
+<br>
+  <img src="{{ profile.image.url }}" class="rounded mx-auto d-block img-responsive float-left" style= "max-height: 100px; max-width: 100px;">
+  <br><br>
+  <br><br> <br>
+  <div class="font-weight-normal text-justify">
+  Gender: {{ profile.gender }}
+<br>
+  Country: {{ profile.Country }}
+  <br>
+  Description: {{ profile.summary }}
+  <br>
+  Preferences: {{ profile.preference }}
+  <br>
+
+  {% endfor %}
+
+
+  </div>
+    </div>
+     </div>
+
+  {% endblock %}
